@@ -59,6 +59,9 @@ body {
     border: var(--small-border) solid white;
     border-right: 20px solid white;
     border-top: 20px solid white;
+
+    /* sombreamento neon */
+    box-shadow: 10px -10px 10px #1925FF;
 }
 
 .btn-red {
@@ -69,6 +72,8 @@ body {
     border-left: var(--big-border) solid white;
     border-top: var(--big-border) solid white;
 
+    /* sombreamento neon */
+    box-shadow: -10px -10px 10px #FF120D;
 }
 
 .btn-yellow {
@@ -78,6 +83,9 @@ body {
     border: var(--small-border) solid white;
     border-left: var(--big-border) solid white;
     border-bottom: var(--big-border) solid white;
+    
+    /* sombreamento neon */
+    box-shadow: -10px 10px 10px #FFCC00;
 }
 
 .btn-green {
@@ -87,6 +95,9 @@ body {
     border: var(--small-border) solid white;
     border-right: var(--big-border) solid white;
     border-bottom: var(--big-border) solid white;
+
+    /* sombreamento neon */
+    box-shadow: 10px 10px 10px #34E035;
 }
 
 #btn-center {
@@ -99,6 +110,13 @@ body {
     left: 50%;
     transform: translate(-50%, -150%);
     border-radius: 100%;
+
+    /* edição do texto do botao */
+    overflow-wrap: break-word;
+    color: black;
+    font-size: 4rem;
+    max-lines: 2;
+    text-shadow: 4px 4px 6px rgba(0,0,0,0.5);
 }
 
 /* MediaQuery */
