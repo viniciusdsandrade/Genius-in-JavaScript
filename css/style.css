@@ -1,6 +1,6 @@
 * {
     outline: none;
-    
+    box-sizing: border-box;    
 }
 
 body {
@@ -128,37 +128,36 @@ body {
 }
 
 /* MediaQuery */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #group-btn {
         
-        --button-size: 100px;
+        --button-size: 200px;
         --big-border: 10px;
         --small-border: 5px;
-        --text-size:2rem;
+        --text-size:2.5rem;
         --shadow-box:10px;
-        --game-size: calc(var(--button-size)*2)
+        --game-size: calc(var(--button-size)*2);
 
-        height: var(--game-size);
-        width: var(--game-size);
     }
     #btn-center{
-        --button-size: 100px;
-        --text-size:1rem;    
+        --button-size: 200px;
+        --text-size:2.5rem;    
     }
     
 
 }
 
-@media (max-width: 350px) {
+@media (max-width: 440px) {
     #group-btn {
-        --button-size: 100px;
+        --button-size: 150px;
         --big-border: 10px;
         --small-border: 5px;
-        --text-size:1rem;
+        --text-size:2rem;
         --shadow-box:5px;
-        
-        height: var(--game-size);
-        width: var(--game-size);
+        --game-size: calc(var(--button-size)*2);
     }
-
+    #btn-center{
+        --button-size: 150px;
+        --text-size:2rem;    
+    }
 }
