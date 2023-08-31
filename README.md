@@ -27,17 +27,15 @@ Genius é um jogo que testa a sua capacidade de memorização de padrões. Ele f
 Este projeto do jogo Genius para navegador web foi realizado como trabalho na disciplina de <strong>Programação de Scripts</strong> do curso de Análise e Desenvolvimento de Sistemas na Fatec Campinas, fazendo uso do conhecimento de <strong>JavaScript</strong> adquirido. 👨‍🎓
 
 <strong>Equipe formada por:</strong><br>
-✔️ Bruno Favaro<br>
-✔️ Carolina Rabello<br>
-✔️ Fabrizzio Michelazzo<br>
-✔️ Felipe Carvalho<br>
-✔️ Gabriel Bianchin<br>
-✔️ Gabriel Rios<br>
-✔️ Lucas Spessotto<br>
-✔️ Luiz Camargos<br>
-✔️ Pedro Henrique Cezarini<br>
-✔️ Pedro Vítor Marques<br>
-✔️ Tales Vedovatti<br>
-✔️ Vítor Lucas Martins<br>
-✔️ Vinícius Andrade<br>
-✔️ Wellington Neves<br>
+✔️ Carolina Rabello - https://github.com/carolrabello<br>
+✔️ Fabrizzio Michelazzo - https://github.com/caron-f<br>
+✔️ Felipe Carvalho - https://github.com/Felipinho5<br>
+✔️ Gabriel Bianchin - https://github.com/drmcga<br>
+✔️ Gabriel Rios - https://github.com/Rios763<br>
+✔️ Luiz Camargos - https://github.com/LuizCamargos<br>
+✔️ Pedro Henrique Cezarini - https://github.com/PedroCezarini<br>
+✔️ Pedro Vítor Marques - https://github.com/pedrovmcastro<br>
+✔️ Tales Vedovatti - https://github.com/TalesVedovatti<br>
+✔️ Vítor Lucas Martins - https://github.com/<br>
+✔️ Vinícius Andrade - https://github.com/viniciusdsandrade<br>
+✔️ Wellington Neves - https://github.com/WellNeves<br>
