@@ -8,18 +8,39 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <meta name="description" content="Genius é um jogo de memorização para crianças.">
     <title>Genius</title>
+
+    <!-- Importar fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Kanit:wght@700&family=Lilita+One&family=Passion+One&family=Prompt:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <div id="div-menu"></div> -->
-    <div id="root">
-        <div id="group-btn">
-            <button class="btn btn-red"></button>
-            <button class="btn btn-blue"></button>
-            <button class="btn btn-yellow"></button>
-            <button class="btn btn-green"></button>
+    <div class="container">
+        <div class="modos-de-jogo">
+            <table class="modos-de-jogo-tabela">
+                <tbody class="modos-de-jogo-lista">
+                    <tr class="modos-de-jogo-titulo"><th>Modos de Jogo</th></tr>
+                    <tr class="modos-de-jogo-texto"><th><button class="modos-de-jogo-botao"></button>Infinity</th></tr>
+                    <tr class="modos-de-jogo-texto"><th><button class="modos-de-jogo-botao"></button>PVP</th></tr>
+                    <tr class="modos-de-jogo-texto"><th><button class="modos-de-jogo-botao"></button>Hard</th></tr>
+                </tbody>
+            </table>
         </div>
-        <button id="btn-center">Genius Game</button>
+        <div class="contador-de-rounds">ROUND 0</div>
+        <div id="root">
+            <div id="group-btn">
+                <button class="btn btn-red"></button>
+                <button class="btn btn-blue"></button>
+                <button class="btn btn-yellow"></button>
+                <button class="btn btn-green"></button>
+                <button id="btn-center">GENIUS</button>
+            </div>
+        </div>
+        <div class="recorde-e-ajuda">
+            <div class="recorde">Recorde<br><p class="hits">12 hits<br>3 hits</p></div>
+            <div><button class="ajuda">?</div>
+        </div>
     </div>
     <!-- <div id="div-aside"></div> -->
 <script src="js/main.js"></script>

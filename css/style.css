@@ -1,13 +1,22 @@
+/*font-family: 'Josefin Sans', sans-serif;
+font-family: 'Kanit', sans-serif;
+font-family: 'Lilita One', cursive;             <----- FONTES IMPORTADAS
+font-family: 'Passion One', cursive;
+font-family: 'Prompt', sans-serif;
+font-family: 'Russo One', sans-serif;*/
+
 * {
     outline: none;
     box-sizing: border-box;    
 }
 
 body {
-    display: flex;
+   /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;*/
     background-color: black;
+    margin: 0;
+    padding: 0;
 }
 
 /* 
@@ -17,15 +26,16 @@ body {
 } */
 
 #root {
-    --button-size: 300px;
+    --button-size: 270px;
     --small-border: 10px;
     --big-border: 20px;
-    --shadow-box: 15px;
+    --shadow-box: 8px;
     --shadow-text: 15px;
-    --text-size: 4rem;
+    --text-size: 55px;
     --game-size: calc((var(--button-size) * 2));
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 
@@ -35,12 +45,11 @@ body {
 } */
 
 #group-btn {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     height: var(--game-size);
     width: var(--game-size);
-    justify-content: center;
-    
+    grid-template-rows: repeat(4, calc(var(--button-size)/2));
+    grid-template-columns: repeat(4, calc(var(--button-size)/2));
 }
 
 /* Botões */
@@ -66,6 +75,8 @@ body {
     border-right: var(--big-border) solid white;
     border-top: var(--big-border) solid white;
 
+    grid-area: 1/3/2/4;
+
     /* sombreamento neon */
     box-shadow: var(--shadow-box) calc(var(--shadow-box)*-1) var(--shadow-box) #1925FF;
 }
@@ -77,6 +88,8 @@ body {
     border: var(--small-border) solid white;
     border-left: var(--big-border) solid white;
     border-top: var(--big-border) solid white;
+
+    grid-area: 1/1/2/2;
 
     /* sombreamento neon */
     box-shadow: calc(var(--shadow-box)*-1) calc(var(--shadow-box)*-1) var(--shadow-box) #FF120D;
@@ -90,6 +103,8 @@ body {
     border-left: var(--big-border) solid white;
     border-bottom: var(--big-border) solid white;
     
+    grid-area: 3/1/4/2;
+
     /* sombreamento neon */
     box-shadow: calc(var(--shadow-box)*-1) var(--shadow-box) var(--shadow-box) #FFCC00;
 }
@@ -102,27 +117,29 @@ body {
     border-right: var(--big-border) solid white;
     border-bottom: var(--big-border) solid white;
 
+    grid-area: 3/3/4/4;
+
     /* sombreamento neon */
     box-shadow: var(--shadow-box) var(--shadow-box) var(--shadow-box) #34E035;
 }
 
 #btn-center {
-    color: white;
     border: none;
     height: var(--button-size);
     width: var(--button-size);
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -150%);
     border-radius: 100%;
 
-    /* edição do texto do botao */
+    grid-area: 2/2/4/4;
+    z-index: 1;
+
+    /* edição do texto do botão */
     font-size: var(--text-size);
     overflow-wrap: break-word;
     text-align: center;
     color: black;
     max-lines: 2;
+    font-family: 'Russo One';
+
     /* sombras */
     text-shadow: 4px 4px var(--shadow-text) rgba(0,0,0,0.5);
 }
@@ -134,17 +151,15 @@ body {
         --button-size: 200px;
         --big-border: 10px;
         --small-border: 5px;
-        --text-size:2.5rem;
-        --shadow-box:10px;
+        --text-size: 2.5rem;
+        --shadow-box: 10px;
         --game-size: calc(var(--button-size)*2);
-
     }
+
     #btn-center{
         --button-size: 200px;
-        --text-size:2.5rem;    
+        --text-size: 2.5rem;    
     }
-    
-
 }
 
 @media (max-width: 440px) {
@@ -152,12 +167,135 @@ body {
         --button-size: 150px;
         --big-border: 10px;
         --small-border: 5px;
-        --text-size:2rem;
-        --shadow-box:5px;
+        --text-size: 2rem;
+        --shadow-box: 5px;
         --game-size: calc(var(--button-size)*2);
     }
     #btn-center{
         --button-size: 150px;
         --text-size:2rem;    
     }
+}
+
+/* Contêiner para tabelamento */
+.container {
+    height: 100vh;
+    padding: 50px;
+
+    display: grid;
+    grid-template-rows: 15% 85%;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-areas:
+    'modos-de-jogo contador-de-rounds recorde-e-ajuda'
+    'modos-de-jogo genius recorde-e-ajuda';
+}
+
+/* Modos de jogo */
+.modos-de-jogo {
+    grid-area: modos-de-jogo;
+}
+
+.modos-de-jogo-tabela {
+    display: flex;
+    justify-content: center;
+}
+
+.modos-de-jogo-lista {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+    border-radius: 20%;
+}
+
+.modos-de-jogo-titulo {
+    font-size: 25px;
+    color: #fff;
+    font-family: 'Russo One';
+    padding: 10px 22px;
+}
+
+.modos-de-jogo-texto {
+    background: none;
+    border: none;
+
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-size: 25px;
+    color: #fff;
+    font-family: 'Josefin Sans';
+}
+
+.modos-de-jogo-texto:last-child {
+    padding-bottom: 20px;
+}
+
+.modos-de-jogo-botao {
+    background: none;
+    border-radius: 5px;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 1px solid #fff;
+}
+
+/* Contador de Rounds */
+.contador-de-rounds {
+    font-family: 'Prompt';
+    color: #fff;
+    font-size: 35px;
+
+    display: grid;
+    justify-content: center;
+    /* padding-top: 50px; */
+
+    grid-area: contador-de-rounds;
+}
+
+/* Genius (localizar no grid) */
+.genius {
+    grid-area: genius;
+}
+
+/* Coluna de recorde e ajuda */
+.recorde-e-ajuda {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    grid-area: recorde-e-ajuda;
+}
+
+.recorde {
+    font-family: 'Russo One';
+    font-size: 32px;
+    color: white;
+
+    text-align: right;
+
+    grid-area: recorde;
+}
+
+.hits {
+    font-family: 'Prompt';
+    font-size: 25px;
+    color: white;
+}
+
+.ajuda {
+    width: 65px;
+    height: 65px;
+    
+    font-size: 30px;
+    font-family: 'Russo One';
+    color: white;
+
+    border-radius: 100%;
+    background: black;
+    border: 5px solid white;
+
+    grid-area: ajuda;
 }
