@@ -19,21 +19,22 @@
     <div class="container">
         <div class="modos-de-jogo">
             <table class="modos-de-jogo-tabela">
-                <tbody class="modos-de-jogo-lista">
+                <tbody class="modos-de-jogo-lista" style="justify-content: center; align-items: center;">
                     <tr class="modos-de-jogo-titulo"><th>Modos de Jogo</th></tr>
-                    <tr class="modos-de-jogo-texto"><th><button class="modos-de-jogo-botao"></button>Infinity</th></tr>
-                    <tr class="modos-de-jogo-texto"><th><button class="modos-de-jogo-botao"></button>PVP</th></tr>
-                    <tr class="modos-de-jogo-texto"><th><button class="modos-de-jogo-botao"></button>Hard</th></tr>
+                    <tr class="modos-de-jogo-texto"><th><input class="modos-de-jogo-botao" type="checkbox"/>Infinity</th></tr>
+                    <tr class="modos-de-jogo-texto"><th><input class="modos-de-jogo-botao" type="checkbox"/>PVP</th></tr>
+                    <tr class="modos-de-jogo-texto"><th><input class="modos-de-jogo-botao" type="checkbox"/>Hard</th></tr>
+                    <tr class="modos-de-jogo-texto" style="justify-content: center; align-items: center;"><th style="justify-content: center; align-items: center;"><button>Start</button></th></tr>
                 </tbody>
             </table>
         </div>
         <div class="contador-de-rounds">ROUND 0</div>
         <div id="root">
             <div id="group-btn">
-                <button class="btn btn-red"></button>
-                <button class="btn btn-blue"></button>
-                <button class="btn btn-yellow"></button>
-                <button class="btn btn-green"></button>
+                <button id="red" class="btn btn-grey"></button>
+                <button id="blue" class="btn btn-grey"></button>
+                <button id="yellow" class="btn btn-grey"></button>
+                <button id="green"class="btn btn-grey"></button>
                 <button id="btn-center">GENIUS</button>
             </div>
         </div>

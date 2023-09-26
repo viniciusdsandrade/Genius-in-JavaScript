@@ -69,13 +69,15 @@ body {
 
 .btn-blue {
     background: #1925FF;
+}
+
+#blue {
+    grid-area: 1/3/2/4;
     border-top-right-radius: 100%;
 
     border: var(--small-border) solid white;
     border-right: var(--big-border) solid white;
     border-top: var(--big-border) solid white;
-
-    grid-area: 1/3/2/4;
 
     /* sombreamento neon */
     box-shadow: var(--shadow-box) calc(var(--shadow-box)*-1) var(--shadow-box) #1925FF;
@@ -83,13 +85,15 @@ body {
 
 .btn-red {
     background: #FF120D;
+}
+
+#red {
     border-top-left-radius: 100%;
+    grid-area: 1/1/2/2;
 
     border: var(--small-border) solid white;
     border-left: var(--big-border) solid white;
     border-top: var(--big-border) solid white;
-
-    grid-area: 1/1/2/2;
 
     /* sombreamento neon */
     box-shadow: calc(var(--shadow-box)*-1) calc(var(--shadow-box)*-1) var(--shadow-box) #FF120D;
@@ -97,13 +101,20 @@ body {
 
 .btn-yellow {
     background: #FFCC00;
+    
+
+    
+
+    
+}
+
+#yellow {
     border-bottom-left-radius: 100%;
+    grid-area: 3/1/4/2;
 
     border: var(--small-border) solid white;
     border-left: var(--big-border) solid white;
     border-bottom: var(--big-border) solid white;
-    
-    grid-area: 3/1/4/2;
 
     /* sombreamento neon */
     box-shadow: calc(var(--shadow-box)*-1) var(--shadow-box) var(--shadow-box) #FFCC00;
@@ -111,16 +122,25 @@ body {
 
 .btn-green {
     background: #34E035;
-    border-bottom-right-radius: 100%;
+}
 
+#green {
+    border-bottom-right-radius: 100%;
+    grid-area: 3/3/4/4;
+    
     border: var(--small-border) solid white;
     border-right: var(--big-border) solid white;
     border-bottom: var(--big-border) solid white;
 
-    grid-area: 3/3/4/4;
-
     /* sombreamento neon */
     box-shadow: var(--shadow-box) var(--shadow-box) var(--shadow-box) #34E035;
+}
+
+.btn-grey {
+    background: #51515c;
+
+    /* sombreamento neon */
+    box-shadow: var(--shadow-box) calc(var(--shadow-box)*-1) var(--shadow-box) #51515c;
 }
 
 #btn-center {
@@ -142,6 +162,11 @@ body {
 
     /* sombras */
     text-shadow: 4px 4px var(--shadow-text) rgba(0,0,0,0.5);
+}
+
+.active {
+    filter: grayscale(0.0);
+    transition: 0.2s;
 }
 
 /* MediaQuery */
@@ -221,6 +246,7 @@ body {
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left: 15px;
 
     font-size: 25px;
     color: #fff;
