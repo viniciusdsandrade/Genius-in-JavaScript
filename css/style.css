@@ -7,26 +7,17 @@ font-family: 'Russo One', sans-serif;*/
 
 * {
     outline: none;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
 
 body {
-   /* display: flex;
-    flex-direction: column;
-    align-items: center;*/
     background-color: black;
     margin: 0;
     padding: 0;
 }
 
-/* 
-#div-menu {
-    background: yellowgreen;
-    flex: 25%;
-} */
-
 #root {
-    --button-size: 270px;
+    --button-size: clamp(240px, 36.5vw / 2, 270px);
     --small-border: 10px;
     --big-border: 20px;
     --shadow-box: 8px;
@@ -37,12 +28,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-/* 
-#div-aside {
-    background: whitesmoke;
-    flex: 25%;
-} */
 
 #group-btn {
     display: grid;
@@ -101,11 +86,6 @@ body {
 
 .btn-yellow {
     background: #FFCC00;
-    
-
-    
-
-    
 }
 
 #yellow {
@@ -169,46 +149,13 @@ body {
     transition: 0.2s;
 }
 
-/* MediaQuery */
-@media (max-width: 600px) {
-    #group-btn {
-        
-        --button-size: 200px;
-        --big-border: 10px;
-        --small-border: 5px;
-        --text-size: 2.5rem;
-        --shadow-box: 10px;
-        --game-size: calc(var(--button-size)*2);
-    }
-
-    #btn-center{
-        --button-size: 200px;
-        --text-size: 2.5rem;    
-    }
-}
-
-@media (max-width: 440px) {
-    #group-btn {
-        --button-size: 150px;
-        --big-border: 10px;
-        --small-border: 5px;
-        --text-size: 2rem;
-        --shadow-box: 5px;
-        --game-size: calc(var(--button-size)*2);
-    }
-    #btn-center{
-        --button-size: 150px;
-        --text-size:2rem;    
-    }
-}
-
 /* Contêiner para tabelamento */
 .container {
     height: 100vh;
-    padding: 50px;
+    padding: 30px;
 
     display: grid;
-    grid-template-rows: 15% 85%;
+    grid-template-rows: 15% 85% 15%;
     grid-template-columns: 25% 50% 25%;
     grid-template-areas:
     'modos-de-jogo contador-de-rounds recorde-e-ajuda'
@@ -230,13 +177,15 @@ body {
     flex-direction: column;
     border: 2px solid gray;
     border-radius: 20%;
+    list-style: none;
+    padding-left: 0;
 }
 
 .modos-de-jogo-titulo {
     font-size: 25px;
     color: #fff;
     font-family: 'Russo One';
-    padding: 10px 22px;
+    padding: 0.5em 1em;
 }
 
 .modos-de-jogo-texto {
@@ -244,9 +193,7 @@ body {
     border: none;
 
     padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
+    padding-block: 15px;
 
     font-size: 25px;
     color: #fff;
@@ -275,7 +222,6 @@ body {
 
     display: grid;
     justify-content: center;
-    /* padding-top: 50px; */
 
     grid-area: contador-de-rounds;
 }
@@ -313,7 +259,7 @@ body {
 
 .ajuda {
     width: 65px;
-    height: 65px;
+    aspect-ratio: 1/1;
     
     font-size: 30px;
     font-family: 'Russo One';
@@ -324,4 +270,117 @@ body {
     border: 5px solid white;
 
     grid-area: ajuda;
+}
+
+/* MediaQuery */
+@media (max-width: 1030px) {
+    .container {
+        grid-template-rows: 15% 35% 35% 15%;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+        'contador-de-rounds modos-de-jogo'
+        'genius modos-de-jogo'
+        'genius recorde-e-ajuda'
+        'genius recorde-e-ajuda';
+    }
+
+    .modos-de-jogo {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .container {
+        height: 150vh;
+        grid-template-rows: 5% 65% 30%;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        'contador-de-rounds contador-de-rounds'
+        'genius genius'
+        'recorde-e-ajuda modos-de-jogo';
+    }
+
+    .contador-de-rounds {
+        align-items: center;
+        font-size: 40px;
+    }
+
+    .modos-de-jogo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .recorde-e-ajuda {
+        justify-content: space-around;
+        flex-direction: row-reverse;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        height: 100vh;
+        padding: 15px;
+        grid-template-rows: 15% 75% 10%;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        'contador-de-rounds recorde-e-ajuda'
+        'genius genius'
+        'modos-de-jogo modos-de-jogo';
+        overflow: hidden;
+    }
+
+    #root {
+        --button-size: clamp(180px, 36.5vw / 2, 270px);
+        --small-border: 7px;
+        --big-border: 14px;
+        --shadow-box: 8px;
+        --shadow-text: 8px;
+        --text-size: 40px;
+        --game-size: calc((var(--button-size) * 2));
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contador-de-rounds {
+        font-size: 30px;
+        align-items: center;
+    }
+
+    .recorde {
+        font-size: 24px;
+        align-self: flex-start;
+    }
+
+    .hits {
+        font-size: 18px;
+    }
+
+    .ajuda {
+        width: 50px;
+        aspect-ratio: 1/1
+        font-size: 30px;
+        align-self: center;
+    }
+
+    .modos-de-jogo-lista {
+        flex-direction: row;
+        border-radius: 0;
+        align-items: baseline;
+    }
+
+    .modos-de-jogo-titulo {
+        font-size: 16px;
+        padding-inline: 10px;
+        text-align: center;
+    }
+    
+    .modos-de-jogo-texto {
+        font-size: 16px;
+        padding-inline: 10px;
+        text-align: center;
+    }
 }

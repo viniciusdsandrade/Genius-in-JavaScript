@@ -18,18 +18,17 @@
 <body>
     <div class="container">
         <div class="modos-de-jogo">
-            <table class="modos-de-jogo-tabela">
-                <tbody class="modos-de-jogo-lista" style="justify-content: center; align-items: center;">
-                    <tr class="modos-de-jogo-titulo"><th>Modos de Jogo</th></tr>
-                    <tr class="modos-de-jogo-texto"><th><input class="modos-de-jogo-botao" type="checkbox"/>Infinity</th></tr>
-                    <tr class="modos-de-jogo-texto"><th><input class="modos-de-jogo-botao" type="checkbox"/>PVP</th></tr>
-                    <tr class="modos-de-jogo-texto"><th><input class="modos-de-jogo-botao" type="checkbox"/>Hard</th></tr>
-                    <tr class="modos-de-jogo-texto" style="justify-content: center; align-items: center;"><th style="justify-content: center; align-items: center;"><button>Start</button></th></tr>
-                </tbody>
-            </table>
+            <div class="modos-de-jogo-tabela">
+                <ul class="modos-de-jogo-lista">
+                    <li class="modos-de-jogo-titulo">Modos de Jogo</li>
+                    <li class="modos-de-jogo-texto"><input class="modos-de-jogo-botao" type="checkbox"/>Infinity</li>
+                    <li class="modos-de-jogo-texto"><input class="modos-de-jogo-botao" type="checkbox"/>PVP</li>
+                    <li class="modos-de-jogo-texto"><input class="modos-de-jogo-botao" type="checkbox"/>Hard</li>
+                </ul>
+            </div>
         </div>
         <div class="contador-de-rounds">ROUND 0</div>
-        <div id="root">
+        <div id="root" class="genius">
             <div id="group-btn">
                 <button id="red" class="btn btn-grey"></button>
                 <button id="blue" class="btn btn-grey"></button>
