@@ -5,6 +5,7 @@ let computerSequence = [];
 let playerSequence = [];
 let round = 0;
 let playerTurn = false;
+let timer = 500;
 
 // Selecionando os elementos html e atribuindo-os para variáveis
 const roundDisplay = document.querySelector('.contador-de-rounds');
@@ -14,6 +15,7 @@ const buttons = {
     yellow: document.getElementById('yellow'),
     green: document.getElementById('green'),
     center: document.getElementById('btn-center'),
+    colored: Array.from(document.getElementsByClassName('btn')),
 };
 
 //Função que inicializa o jogo e começa um round
@@ -22,7 +24,6 @@ function playRound() {
     showSequence();
     round++;
     roundDisplay.textContent = `ROUND ${round}`;
-    playerTurn = true;
 }
 
 //Função que mostra a sequência de botões a ser apertados e caso ja tenha mostrado todos, habilita para começar a rodada do player
@@ -31,34 +32,55 @@ function showSequence() {
     const interval = setInterval(() => {
         if (i === computerSequence.length) {
             clearInterval(interval);
-            playerTurn = true;
+
+            setTimeout(() => {
+                buttons.colored.forEach(canPress);
+                playerTurn = true;
+            }, i * timer);
+
             return;
         }
         const color = computerSequence[i];
         setTimeout(() => {
             illuminateColor(color);
-        }, i * 1000);
+        }, i * timer);
         i++;
-    }, 1000);
+    }, timer);
 }
 
-//Função que faz a animação de iluminar/colorir/piscar o botão 
+//Funções que fazem a animação de piscar o botão 
 function illuminateColor(color) {
-    buttons[color].classList.remove('btn-grey');
-    buttons[color].classList.add(`btn-${color}`);
+    let buttonToIlluminate = document.getElementById(`${color}`);
+
+    light(buttonToIlluminate);
+
     setTimeout(() => {
-        buttons[color].classList.add('btn-grey');
-        buttons[color].classList.remove(`btn-${color}`);
-    }, 1000);
+        dark(buttonToIlluminate);
+    }, timer);
 }
 
+function light(element) {
+    element.style.setProperty("--opacity", "100%");
+}
 
-//Função que checa uma jogada do jogador, se estiver correta, o jogo processegue, se estiver errada ela termina o jogo
+function dark(element) {
+    element.style.setProperty("--opacity", "65%");
+}
+
+//Funções para trocar o cursor dependendo do contexto
+function canPress(element) {
+    element.style.cursor = "pointer";
+}
+
+function cannotPress(element) {
+    element.style.cursor = "default";
+}
+
+//Função que checa uma jogada do jogador, se estiver correta, o jogo prossegue, se estiver errada ela termina o jogo
 function checkPlayerInput(color) {
     if (!playerTurn) return;
 
     playerSequence.push(color);
-    illuminateColor(color);
 
     const index = playerSequence.length - 1;
     if (playerSequence[index] !== computerSequence[index]) {
@@ -66,18 +88,22 @@ function checkPlayerInput(color) {
         return;
     }
 
+    illuminateColor(color);
+
     if (playerSequence.length === computerSequence.length) {
         playerTurn = false;
         playerSequence = [];
+
         setTimeout(() => {
+            buttons.colored.forEach(cannotPress);
             playRound();
-        }, 1000);
+        }, timer);
     }
 }
 
 //Função de final de jogo
 function gameOver() {
-    alert(`Fim de jogo! Sua pontuação: ${round}`);
+    alert(`Fim de jogo! Sua pontuação: ${round-1}`);
     resetGame();
 }
 
@@ -86,7 +112,11 @@ function resetGame() {
     computerSequence = [];
     playerSequence = [];
     round = 0;
-    roundDisplay.textContent = 'ROUND 0';
+    roundDisplay.textContent = "ROUND 0";
+    buttons.center.textContent = "JOGAR";
+    buttons.colored.forEach(cannotPress);
+    canPress(buttons.center);
+    buttons.colored.forEach(light);
     playerTurn = false;
 }
 
@@ -96,9 +126,12 @@ buttons.blue.addEventListener('click', () => checkPlayerInput('blue'));
 buttons.yellow.addEventListener('click', () => checkPlayerInput('yellow'));
 buttons.green.addEventListener('click', () => checkPlayerInput('green'));
 
-//Evento que é acionado ao clicar em "Genius" no centro da tela para iniciar o jogo
+//Evento que é acionado ao clicar em "Jogar" no centro da tela para iniciar o jogo
 buttons.center.addEventListener('click', () => {
     if (!computerSequence.length) {
-      playRound();
+        buttons.center.textContent = "GENIUS";
+        cannotPress(buttons.center);
+        buttons.colored.forEach(dark);
+        playRound();
     }
 });
