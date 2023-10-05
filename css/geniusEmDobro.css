@@ -1,0 +1,44 @@
+#group-btn button {
+    box-shadow: none;
+}
+
+/* Botões */
+.btn {
+    clip-path: polygon(100% 100%, 100% 0, 0 0);
+}
+
+#orange, #purple, #darkgreen, #pink {
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+#orange {
+    grid-area: var(--area1);
+    background: rgba(214, 137, 16, var(--opacity));
+}
+
+#purple {
+    grid-area: var(--area2);
+    background: rgba(128, 0, 128, var(--opacity));
+    transform: rotate(90deg);
+}
+
+#darkgreen {
+    grid-area: var(--area3);
+    background: rgba(0, 100, 0, var(--opacity));
+    transform: rotate(180deg);
+}
+
+#pink {
+    grid-area: var(--area4);
+    background: rgba(250, 91, 216, var(--opacity));
+    transform: rotate(-90deg);
+}
+
+/* Bordas */
+.diagonal1 {
+    transform: rotate(45deg);
+}
+
+.diagonal2 {
+    transform: rotate(-45deg);
+}

@@ -1,7 +1,7 @@
 class GeniusGame {
     constructor() {
         // Inicialização das variáveis e elementos do jogo
-        this.colors = ['red', 'blue', 'green', 'yellow']; // Cores disponíveis no jogo
+        this.colors = ['orange', 'red', 'purple', 'blue', 'darkgreen', 'green', 'pink', 'yellow']; // Cores disponíveis no jogo
         this.computerSequence = []; // Sequência gerada pelo computador
         this.playerSequence = []; // Sequência inserida pelo jogador
         this.round = 0; // Número da rodada atual
@@ -9,9 +9,13 @@ class GeniusGame {
         this.timer = 500; // Tempo entre os flashes das cores
         this.roundDisplay = document.querySelector('.contador-de-rounds'); // Elemento de exibição do número da rodada
         this.buttons = {
+            orange: document.getElementById('orange'),
             red: document.getElementById('red'),
+            purple: document.getElementById('purple'),
             blue: document.getElementById('blue'),
+            darkgreen: document.getElementById('darkgreen'),
             green: document.getElementById('green'),
+            pink: document.getElementById('pink'),
             yellow: document.getElementById('yellow'),
             center: document.getElementById('btn-center'), // Botão central de início de jogo
             colored: Array.from(document.getElementsByClassName('btn')), // Array de botões coloridos
