@@ -15,38 +15,51 @@
     <!-- Importar fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Kanit:wght@700&family=Lilita+One&family=Passion+One&family=Prompt:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Kanit:wght@700&family=Lilita+One&family=Passion+One&family=Prompt:wght@500;700&family=Russo+One&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="modos-de-jogo">
-            <div class="modos-de-jogo-tabela">
-                <ul class="modos-de-jogo-lista">
-                    <li class="modos-de-jogo-titulo">Modos de Jogo</li>
-                    <li class="modos-de-jogo-texto"><input class="modos-de-jogo-botao" type="checkbox"/>Infinity</li>
-                    <li class="modos-de-jogo-texto"><input class="modos-de-jogo-botao" type="checkbox"/>PVP</li>
-                    <li class="modos-de-jogo-texto"><input class="modos-de-jogo-botao" type="checkbox"/>Hard</li>
-                </ul>
-            </div>
-        </div>
-        <div class="contador-de-rounds">ROUND 0</div>
-        <div id="root" class="genius">
-            <div id="group-btn">
-                <button id="red" class="btn"></button>
-                <button id="blue" class="btn"></button>
-                <button id="yellow" class="btn"></button> 
-                <button id="green"class="btn"></button>
-                <button id="btn-center">JOGAR</button>
-            </div>
-        </div>
-        <div class="recorde-e-ajuda">
-            <div class="recorde">Recorde<br><p class="hits">12 hits<br>3 hits</p></div>
-            <div><button class="ajuda">?</div>
+<div class="container">
+    <div class="modos-de-jogo">
+        <div class="modos-de-jogo-tabela">
+            <ul class="modos-de-jogo-lista">
+                <li class="modos-de-jogo-titulo">Modos de Jogo</li>
+                <li class="modos-de-jogo-texto"><label>
+                    <input class="modos-de-jogo-botao" type="checkbox"/>
+                </label>Infinity
+                </li>
+                <li class="modos-de-jogo-texto"><label>
+                    <input class="modos-de-jogo-botao" type="checkbox"/>
+                </label>PVP
+                </li>
+                <li class="modos-de-jogo-texto"><label>
+                    <input class="modos-de-jogo-botao" type="checkbox"/>
+                </label>Hard
+                </li>
+            </ul>
         </div>
     </div>
+    <div class="contador-de-rounds">ROUND 0</div>
+    <div id="root" class="genius">
+        <div id="group-btn">
+            <button id="red" class="btn"></button>
+            <button id="blue" class="btn"></button>
+            <button id="yellow" class="btn"></button>
+            <button id="green" class="btn"></button>
+            <button id="btn-center">JOGAR</button>
+        </div>
+    </div>
+    <div class="recorde-e-ajuda">
+        <div class="recorde">Recorde<br>
+            <p class="hits">12 hits<br>3 hits</p></div>
+        <div>
+            <button class="ajuda">?</button>
+        </div>
+    </div>
+</div>
 
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>

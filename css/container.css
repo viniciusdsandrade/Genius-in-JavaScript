@@ -24,7 +24,7 @@
 .modos-de-jogo-lista {
     display: flex;
     flex-direction: column;
-    border: 2px solid gray;
+    border: 2px solid rgb(128, 128, 128);
     border-radius: 20%;
     list-style: none;
     padding-left: 0;

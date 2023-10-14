@@ -6,7 +6,7 @@ class GeniusGame {
         this.playerSequence = []; // Sequência inserida pelo jogador
         this.round = 0; // Número da rodada atual
         this.playerTurn = false; // Indica se é a vez do jogador
-        this.timer = 500; // Tempo entre os flashes das cores
+        this.timer = 800; // Tempo entre os flashes das cores
         this.roundDisplay = document.querySelector('.contador-de-rounds'); // Elemento de exibição do número da rodada
         this.buttons = {
             red: document.getElementById('red'),
@@ -15,6 +15,14 @@ class GeniusGame {
             green: document.getElementById('green'),
             center: document.getElementById('btn-center'), // Botão central de início de jogo
             colored: Array.from(document.getElementsByClassName('btn')), // Array de botões coloridos
+        };
+        this.sounds = {
+            red: new Audio('som/red.mp3'),
+            blue: new Audio('som/blue.mp3'),
+            yellow: new Audio('som/yellow.mp3'),
+            green: new Audio('som/green.mp3'),
+            error: new Audio('som/error2.mp3'),
+            start: new Audio('som/start.mp3')
         };
         // Inicializa o jogo
         this.initializeGame();
@@ -37,6 +45,7 @@ class GeniusGame {
     startGame() {
         // Inicia o jogo quando o botão central é clicado
         if (!this.computerSequence.length) {
+            this.sounds.start.play().then(r => r); // Toca o som de início do jogo
             this.buttons.center.textContent = "GENIUS"; // Altera o texto do botão central
             this.buttons.center.style.cursor = "default"; // Desativa o cursor do botão central
             this.buttons.colored.forEach(button => this.dark(button)); // Escurece todos os botões coloridos
@@ -99,11 +108,13 @@ class GeniusGame {
         }
     }
 
-
     // Método para iluminar um botão com a cor especificada
     illuminateColor(color) {
         // Obtém o elemento do botão correspondente à cor
         let buttonToIlluminate = this.buttons[color];
+        // Tocar o som correspondente à cor
+        //this.sounds.currentTime = 0;
+        this.sounds[color].play();
         // Chama o método para tornar o botão claro
         this.light(buttonToIlluminate);
         // Aguarda um período de tempo (this.timer) e, em seguida, escurece o botão novamente
@@ -138,6 +149,8 @@ class GeniusGame {
 
     // Método para lidar com o fim do jogo
     gameOver() {
+        // Toca o som do erro
+        this.sounds.error.play().then(r => r);
         // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
         alert(`Fim de jogo! Sua pontuação: ${this.round - 1}`);
         // Reinicia o jogo
@@ -166,4 +179,4 @@ class GeniusGame {
 }
 
 // Cria uma instância do jogo Genius
-const geniusGame = new GeniusGame();
+new GeniusGame();
