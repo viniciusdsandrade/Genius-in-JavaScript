@@ -36,6 +36,6 @@ Este projeto do jogo Genius para navegador web foi realizado como trabalho na di
 ✔️ Pedro Henrique Cezarini - https://github.com/PedroCezarini<br>
 ✔️ Pedro Vítor Marques - https://github.com/pedrovmcastro<br>
 ✔️ Tales Vedovatti - https://github.com/TalesVedovatti<br>
-✔️ Vítor Lucas Martins - https://github.com/<br>
+✔️ Vítor Lucas Martins - https://github.com/AlanTheCommunist<br>
 ✔️ Vinícius Andrade - https://github.com/viniciusdsandrade<br>
 ✔️ Wellington Neves - https://github.com/WellNeves<br>
