@@ -1,17 +1,4 @@
-#root {
-    --button-size: clamp(240px, 36.5vw / 2, 270px);
-    --small-border: 10px;
-    --big-border: 20px;
-    --shadow-box: 8px;
-    --shadow-text: 15px;
-    --text-size: 55px;
-    --game-size: calc((var(--button-size) * 2));
-    display: grid;
-    align-items: center;
-    justify-content: center;
-}
-
-#group-btn {
+.group-btn {
     display: grid;
     width: var(--game-size);
     aspect-ratio: 1/1;

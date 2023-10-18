@@ -1,4 +1,4 @@
-class GeniusGame {
+class GeniusInfinityGame {
     constructor() {
         // Inicialização das variáveis e elementos do jogo
         this.colors = ['red', 'blue', 'yellow', 'green']; // Cores disponíveis no jogo
@@ -178,5 +178,5 @@ class GeniusGame {
     }
 }
 
-// Cria uma instância do jogo Genius
-new GeniusGame();
+// Coloca a classe no escopo global
+window.GeniusInfinityGame = GeniusInfinityGame;
