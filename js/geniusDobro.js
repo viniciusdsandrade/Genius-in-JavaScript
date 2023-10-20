@@ -20,6 +20,18 @@ class GeniusDobroGame {
             center: document.getElementById('btn-center'), // Botão central de início de jogo
             colored: Array.from(document.getElementsByClassName('btn')), // Array de botões coloridos
         };
+        this.sounds = {
+            red: new Audio('som/red.mp3'),
+            blue: new Audio('som/blue.mp3'),
+            yellow: new Audio('som/yellow.mp3'),
+            green: new Audio('som/green.mp3'),
+            darkgreen: new Audio('som/darkgreen.mp3'),
+            orange: new Audio('som/orange.mp3'),
+            pink: new Audio('som/pink.mp3'),
+            purple: new Audio('som/purple.mp3'),
+            error: new Audio('som/error2.mp3'),
+            start: new Audio('som/start.mp3')
+        };
         // Inicializa o jogo
         this.initializeGame();
     }
@@ -41,6 +53,7 @@ class GeniusDobroGame {
     startGame() {
         // Inicia o jogo quando o botão central é clicado
         if (!this.computerSequence.length) {
+            this.sounds.start.play().then(r => r); //Toca o som de início do jogo
             this.buttons.center.textContent = "GENIUS"; // Altera o texto do botão central
             this.buttons.center.style.cursor = "default"; // Desativa o cursor do botão central
             this.buttons.colored.forEach(button => this.dark(button)); // Escurece todos os botões coloridos
@@ -108,6 +121,8 @@ class GeniusDobroGame {
     illuminateColor(color) {
         // Obtém o elemento do botão correspondente à cor
         let buttonToIlluminate = this.buttons[color];
+        // Toca o som no índice color da array sounds (som correspondente a cor)
+        this.sounds[color].play();
         // Chama o método para tornar o botão claro
         this.light(buttonToIlluminate);
         // Aguarda um período de tempo (this.timer) e, em seguida, escurece o botão novamente
@@ -142,6 +157,8 @@ class GeniusDobroGame {
 
     // Método para lidar com o fim do jogo
     gameOver() {
+        // Toca o som de erro
+        this.sounds.error.play().then(r => r);
         // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
         alert(`Fim de jogo! Sua pontuação: ${this.round - 1}`);
         // Reinicia o jogo
