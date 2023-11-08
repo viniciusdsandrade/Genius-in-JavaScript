@@ -36,6 +36,7 @@ class GeniusInfinityGame {
     initializeGame() {
         this.addEventListeners(); // Adiciona os ouvintes de eventos
         this.resetGame(); // Reinicia o jogo
+        this.showTopScores(); // Exibe os recordes iniciais
     }
 
     // Método para adicionar os ouvintes de eventos
@@ -137,10 +138,35 @@ class GeniusInfinityGame {
         element.style.cursor = "default"; // Define o cursor do elemento como "default" para indicar que ele não pode ser clicado
     }
 
+    // Função para exibir os recordes
+    showTopScores() {
+        const scores = JSON.parse(localStorage.getItem('geniusScores')) || [];
+        const topScores = scores.slice(0, 3); // Obtém os 3 melhores recordes
+        const hitsElement = document.querySelector('.hits');
+
+            if (topScores.length > 0) {
+                const hitsText = topScores.map(score => `${score} hits`).join('<br>');
+                hitsElement.innerHTML = hitsText;
+            } else {
+                hitsElement.textContent = 'Nenhum recorde ainda';
+            }
+    }
+
+    // Função para salvar a pontuação atual no armazenamento local após o fim de um jogo
+    saveScore(score) {
+        const scores = JSON.parse(localStorage.getItem('geniusScores')) || [];
+        scores.push(score);
+        scores.sort((a, b) => b - a); // Classifica as pontuações em ordem decrescente
+        localStorage.setItem('geniusScores', JSON.stringify(scores));
+        this.showTopScores(); // Atualiza a exibição dos recordes
+    }
+
     // Método para lidar com o fim do jogo
     gameOver() {
         this.sounds.error.play().then(r => r); // Toca o som do erro
-        alert(`Fim de jogo! Sua pontuação: ${this.round - 1}`); // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
+        const score = this.round - 1;
+        this.saveScore(score); // Salva a pontuação atual
+        alert(`Fim de jogo! Sua pontuação: ${score}`); // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
         this.resetGame(); // Reinicia o jogo
     }
 
