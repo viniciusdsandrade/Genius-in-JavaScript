@@ -6,6 +6,7 @@ let playerSequence = [];
 let round = 0;
 let playerTurn = false;
 let timer = 500;
+let recordes = [12, 43, 65]
 
 // Selecionando os elementos html e atribuindo-os para variáveis
 const roundDisplay = document.querySelector('.contador-de-rounds');
@@ -17,6 +18,11 @@ const buttons = {
     center: document.getElementById('btn-center'),
     colored: Array.from(document.getElementsByClassName('btn')),
 };
+const recorde1 =  document.getElementById('recorde1')
+const recorde2 =  document.getElementById('recorde2')
+const recorde3 =  document.getElementById('recorde3')
+
+
 
 //Função que inicializa o jogo e começa um round
 function playRound() {
@@ -103,8 +109,13 @@ function checkPlayerInput(color) {
 
 //Função de final de jogo
 function gameOver() {
-    alert(`Fim de jogo! Sua pontuação: ${round-1}`);
+    let pontuacaoFinal= round - 1 
+    alert(`Fim de jogo! Sua pontuação: ${pontuacaoFinal}`);
+    recorde1.innerText = `${recordes[2]} hits`
+    recorde2.innerText = `${recordes[1]} hits`
+    recorde3.innerText= `${recordes[0]} hits`
     resetGame();
+    let a = 0;
 }
 
 //Função que reseta o jogo para as configurações iniciais
