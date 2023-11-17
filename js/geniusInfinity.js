@@ -140,15 +140,17 @@ class GeniusInfinityGame {
     
     // Função para salvar a pontuação atual no armazenamento local após o fim de um jogo
     saveScore(score) {
-        const key = `geniusScores_infinity`; // ou `geniusScores_dobro` para a outra classe
-        const scores = JSON.parse(localStorage.getItem(key)) || [];
+        if (score > 0) {
+            const key = `geniusScores_infinity`; // ou `geniusScores_dobro` para a outra classe
+            const scores = JSON.parse(localStorage.getItem(key)) || [];
     
-        // Verifica se a pontuação é maior do que a pontuação mais baixa no registro
-        if (scores.length === 0 || score > scores[scores.length - 1]) {
-            scores.push(score);
-            scores.sort((a, b) => b - a); // Classifica as pontuações em ordem decrescente
-            localStorage.setItem(key, JSON.stringify(scores));
-            this.showTopScores(); // Atualiza a exibição dos recordes
+            // Verifica se a pontuação é maior do que a pontuação mais baixa no registro
+            if (scores.length === 0 || score > scores[scores.length - 1]) {
+                scores.push(score);
+                scores.sort((a, b) => b - a); // Classifica as pontuações em ordem decrescente
+                localStorage.setItem(key, JSON.stringify(scores));
+                this.showTopScores(); // Atualiza a exibição dos recordes
+            }
         }
     }
     
@@ -156,17 +158,16 @@ class GeniusInfinityGame {
     showTopScores() {
         const key = `geniusScores_infinity`; // ou `geniusScores_dobro` para a outra classe
         const scores = JSON.parse(localStorage.getItem(key)) || [];
-        const topScores = scores.slice(0, 3);
+        const filteredScores = scores.filter(score => score > 0);
+        const topScores = filteredScores.slice(0, 3);
     
         const hitsElement = document.querySelector('.hits');
     
         if (topScores.length > 0) {
             const hitsText = topScores.map(score => `${score} hits`).join('<br>');
             hitsElement.innerHTML = hitsText;
-        } else if (scores.length > 0) {
-            hitsElement.textContent = 'Nenhum recorde ainda';
         } else {
-            hitsElement.textContent = ''; // Limpa o conteúdo se não houver pontuações
+            hitsElement.textContent = 'Nenhum recorde ainda';
         }
     }
 
