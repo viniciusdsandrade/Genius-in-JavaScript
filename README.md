@@ -1,5 +1,4 @@
 <p align="center">
-    <img src="https://github.com/viniciusdsandrade/genius-in-js/images/genius.png" width="200"><br>
   🔴🔵🟡🟢 <i>Teste sua capacidade de memorização com este jogo desafiador!</i> 🟢🟡🔵🔴<br><br>
 </p>
 
@@ -20,7 +19,7 @@ Genius é um jogo que testa a sua capacidade de memorização de padrões. Ele f
 
 ♾️ | <strong>Infinity:</strong> é o modo tradicional do Genius. Teste sua memória para ver quantas rodadas é capaz de completar! <br> <br>
 ⚔️ | <strong>PVP:</strong> compita com um amigo para ver quem consegue ir mais longe! <br> <br>
-💢 | <strong>Hard:</strong> sabe o que é melhor do que um Genius de 4 botões? Um Genius de 8 botões! Eleve sua capacidade de memorizar aos limites nessa versão que exige o dobro de atenção!
+💢 | <strong>Dobro:</strong> sabe o que é melhor do que um Genius de 4 botões? Um Genius de 8 botões! Eleve sua capacidade de memorizar aos limites nessa versão que exige o dobro de atenção!
 
 # 🚀 | O Projeto
 
