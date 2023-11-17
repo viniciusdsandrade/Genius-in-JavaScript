@@ -1,3 +1,4 @@
+<h1 align="center">GENIUS</h1>
 <p align="center">
   🔴🔵🟡🟢 <i>Teste sua capacidade de memorização com este jogo desafiador!</i> 🟢🟡🔵🔴<br><br>
 </p>
