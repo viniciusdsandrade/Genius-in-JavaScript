@@ -141,11 +141,11 @@ class GeniusInfinityGame {
     // Função para salvar a pontuação atual no armazenamento local após o fim de um jogo
     saveScore(score) {
         if (score > 0) {
-            const key = `geniusScores_infinity`; // ou `geniusScores_dobro` para a outra classe
-            const scores = JSON.parse(localStorage.getItem(key)) || [];
-    
-            // Verifica se a pontuação é maior do que a pontuação mais baixa no registro
-            if (scores.length === 0 || score > scores[scores.length - 1]) {
+            const key = `geniusScores_infinity`; 
+            let scores = JSON.parse(localStorage.getItem(key)) || [];
+
+            // Verifica se a pontuação é maior do que a pontuação mais baixa no registro e não é repetida
+            if (scores.length === 0 || (score > scores[scores.length - 1] && !scores.includes(score))) {
                 scores.push(score);
                 scores.sort((a, b) => b - a); // Classifica as pontuações em ordem decrescente
                 localStorage.setItem(key, JSON.stringify(scores));
@@ -153,16 +153,16 @@ class GeniusInfinityGame {
             }
         }
     }
-    
+
     // Função para exibir os recordes
     showTopScores() {
-        const key = `geniusScores_infinity`; // ou `geniusScores_dobro` para a outra classe
+        const key = `geniusScores_infinity`;
         const scores = JSON.parse(localStorage.getItem(key)) || [];
-        const filteredScores = scores.filter(score => score > 0);
+        const filteredScores = scores.filter((score, index, self) => score > 0 && self.indexOf(score) === index);
         const topScores = filteredScores.slice(0, 3);
-    
+
         const hitsElement = document.querySelector('.hits');
-    
+
         if (topScores.length > 0) {
             const hitsText = topScores.map(score => `${score} hits`).join('<br>');
             hitsElement.innerHTML = hitsText;
@@ -170,7 +170,7 @@ class GeniusInfinityGame {
             hitsElement.textContent = 'Nenhum recorde ainda';
         }
     }
-
+    
     // Método para lidar com o fim do jogo
     gameOver() {
         this.sounds.error.play().then(r => r); // Toca o som do erro
