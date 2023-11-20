@@ -29,13 +29,14 @@ class GeniusInfinityGame {
             start: new Audio('som/start.mp3'),
             error: new Audio('som/error2.mp3')
         }; // Sons do jogo
-        this.initializeGame();  // Inicializa o jogo
+        this.initializeGame("infinity"); // Inicializa o jogo
     }
 
     // Método para inicializar o jogo
     initializeGame() {
         this.addEventListeners(); // Adiciona os ouvintes de eventos
         this.resetGame(); // Reinicia o jogo
+        this.showTopScores(); // Exibe os recordes iniciais
     }
 
     // Método para adicionar os ouvintes de eventos
@@ -136,11 +137,46 @@ class GeniusInfinityGame {
     cannotPress(element) {
         element.style.cursor = "default"; // Define o cursor do elemento como "default" para indicar que ele não pode ser clicado
     }
+    
+    // Função para salvar a pontuação atual no armazenamento local após o fim de um jogo
+    saveScore(score) {
+        if (score > 0) {
+            const key = `geniusScores_infinity`; 
+            let scores = JSON.parse(localStorage.getItem(key)) || [];
 
+            // Verifica se a pontuação é maior do que a pontuação mais baixa no registro e não é repetida
+            if (scores.length === 0 || (score > scores[scores.length - 1] && !scores.includes(score))) {
+                scores.push(score);
+                scores.sort((a, b) => b - a); // Classifica as pontuações em ordem decrescente
+                localStorage.setItem(key, JSON.stringify(scores));
+                this.showTopScores(); // Atualiza a exibição dos recordes
+            }
+        }
+    }
+
+    // Função para exibir os recordes
+    showTopScores() {
+        const key = `geniusScores_infinity`;
+        const scores = JSON.parse(localStorage.getItem(key)) || [];
+        const filteredScores = scores.filter((score, index, self) => score > 0 && self.indexOf(score) === index);
+        const topScores = filteredScores.slice(0, 3);
+
+        const hitsElement = document.querySelector('.hits');
+
+        if (topScores.length > 0) {
+            const hitsText = topScores.map(score => `${score} hits`).join('<br>');
+            hitsElement.innerHTML = hitsText;
+        } else {
+            hitsElement.textContent = 'Nenhum recorde ainda';
+        }
+    }
+    
     // Método para lidar com o fim do jogo
     gameOver() {
         this.sounds.error.play().then(r => r); // Toca o som do erro
-        alert(`Fim de jogo! Sua pontuação: ${this.round - 1}`); // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
+        const score = this.round - 1;
+        alert(`Fim de jogo! Sua pontuação: ${score}`); // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
+        this.saveScore(score); // Salva a pontuação atual
         this.resetGame(); // Reinicia o jogo
     }
 
