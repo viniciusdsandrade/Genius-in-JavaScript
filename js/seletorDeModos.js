@@ -89,3 +89,17 @@ function criarTagScript(nome) {
     script.classList.add(`${nome}`);
     return script;
 }
+
+
+//Código para o botão ajuda para a tela de selecionar o modo.
+document.querySelector("#ajuda").addEventListener("click", () => {
+    // Seleciona o overlay
+    const overlay = document.querySelector("#overlay");
+    // Condicional para mostrar o overlay caso ele esteja invisível e vice-versa
+        if (overlay.style.display == "block") {
+            this.overlay.style.display = "none";
+        } else {
+            this.overlay.style.display = "block";
+        }
+    }
+)

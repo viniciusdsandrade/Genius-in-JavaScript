@@ -106,7 +106,7 @@
     color: white;
 }
 
-.ajuda {
+#ajuda {
     width: 65px;
     aspect-ratio: 1/1;
     text-align: center;
@@ -120,4 +120,26 @@
     border: 5px solid white;
 
     grid-area: ajuda;
+}
+
+#overlay {
+    position: fixed;
+    display: none; 
+    height: 520px;
+    width: 380px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.781);
+    z-index: 2;
+    cursor: pointer; 
+    color: rgb(255, 255, 255);
+    margin: auto;
+    border-radius: 35px;
+    border: 2px solid rgb(128, 128, 128);
+    font-family: 'Russo One';;
+    text-align: left;
+    font-size: 15px;
+    padding: 0.5em 1em;
 }
