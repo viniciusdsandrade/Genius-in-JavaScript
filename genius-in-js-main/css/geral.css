@@ -1,0 +1,37 @@
+/*font-family: 'Josefin Sans', sans-serif;
+font-family: 'Kanit', sans-serif;
+font-family: 'Lilita One', cursive;             <----- FONTES IMPORTADAS
+font-family: 'Passion One', cursive;
+font-family: 'Prompt', sans-serif;
+font-family: 'Russo One', sans-serif;*/
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    --button-size: clamp(240px, 36.5vw / 2, 270px);
+    --small-border: 10px;
+    --big-border: 20px;
+    --shadow-box: 8px;
+    --shadow-text: 15px;
+    --text-size: 55px;
+    --game-size: calc((var(--button-size) * 2));
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.aviso-escolha-modo {
+    color: white;
+    font-size: 50px;
+    font-family: 'Kanit';
+    text-align: center;
+}
