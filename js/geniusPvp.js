@@ -78,7 +78,6 @@ class GeniusPvpGame {
                 clearInterval(interval); // Limpa o intervalo quando todas as cores foram exibidas
                 setTimeout(() => { // Aguarda um pequeno intervalo antes de permitir que o jogador clique nos botões
                     this.buttons.colored.forEach(button => this.canPress(button)); // Permite que o jogador clique nos botões
-                    console.log('Vez do jogador 1');
                     this.playerTurn = true; // É a vez do jogador
                 }, i * this.timer);
                 return;
@@ -94,57 +93,66 @@ class GeniusPvpGame {
     checkPlayerInput(color) {
         if (!this.playerTurn) return;
 
+        // Apenas se for a vez do jogador 1
         if(this.whichPlayer === 1) {
             this.playerSequence1.push(color);
             const index = this.playerSequence1.length - 1;
 
+            // Caso o jogador 1 erre
             if (this.playerSequence1[index] !== this.computerSequence[index]) {
-                this.whichPlayer = 2;
+                this.whichPlayer = 2; // Passar a vez pro jogador 2
                 alert('Jogador 1 errou. Vez do jogador 2.');
-                this.playerSequence1.pop();
-                return;
+                this.playerSequence1.pop(); // Tirar o último elemento na sequência do jogador 1, porque foi um erro
+                return; // Encerrar a função
             }
 
             this.illuminateColor(color);
 
+            // Caso o jogador 1 acerte tudo
             if (this.playerSequence1.length === this.computerSequence.length) {
-                this.whichPlayer = 2;
+                this.whichPlayer = 2; // Passar a vez pro jogador 2
                 alert('Jogador 1 acertou. Vez do jogador 2.');
-                return;
+                return; // Encerrar a função
             }
         }
 
+        // Apenas se for a vez do jogador 2
         if(this.whichPlayer === 2) {
             this.playerSequence2.push(color);
             const index = this.playerSequence2.length - 1;
 
+            // Caso o jogador 2 erre
             if (this.playerSequence2[index] !== this.computerSequence[index]) {
-                this.playerSequence2.pop();
+                this.playerSequence2.pop(); // Tirar o último elemento na sequência do jogador 2, porque foi um erro
 
+                // Ver qual dos jogadores tem a sequência maior para definir o vencedor
                 if(this.playerSequence1.length > this.playerSequence2.length) alert('Jogador 1 ganhou.');
                 else if(this.playerSequence1.length === this.playerSequence2.length) alert('Empate.');
                 else alert('Jogador 2 ganhou.');
 
-                this.gameOver();
-                return;
+                this.gameOver(); // Resetar o jogo
+                return; // Encerrar a função
             }
 
             this.illuminateColor(color);
 
+            // Caso o jogador 2 acerte tudo
             if (this.playerSequence2.length === this.computerSequence.length) {
-                this.whichPlayer = 1;
+                this.whichPlayer = 1; // Passar a vez pro jogador 1
 
+                // Se a sequência do jogador 2 for maior que a do 1, é porque ele venceu
+                // Caso contrário, é porque ambos acertaram tudo e podem ir para o próximo round
                 if(this.playerSequence1.length < this.playerSequence2.length)
                 {
                     alert('Jogador 2 ganhou.');
-                    this.gameOver();
-                    return;
+                    this.gameOver(); // Resetar o jogo
+                    return; // Encerrar a função
                 }
-
+                
+                // Preparação do próximo round
                 this.playerTurn = false;
                 this.playerSequence1 = [];
                 this.playerSequence2 = [];
-                
                 setTimeout(() => {
                     this.buttons.colored.forEach(button => this.cannotPress(button));
                     this.playRound();
