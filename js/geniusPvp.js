@@ -34,6 +34,10 @@ class GeniusPvpGame {
             start: new Audio('som/start.mp3'),
             error: new Audio('som/error2.mp3')
         }; // Sons do jogo
+
+        const hitsElement = document.querySelector('.hits');
+        hitsElement.textContent = '---'; // Esvaziar a tabela de recordes para o modo PVP
+
         this.initializeGame();  // Inicializa o jogo
     }
 
