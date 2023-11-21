@@ -10,7 +10,9 @@ class GeniusPvpGame {
             'green'
         ]; // Cores disponíveis no jogo
         this.computerSequence = []; // Sequência gerada pelo computador
-        this.playerSequence = []; // Sequência inserida pelo jogador
+        this.playerSequence1 = []; // Sequência inserida pelo jogador 1
+        this.playerSequence2 = []; // Sequência inserida pelo jogador 2
+        this.whichPlayer = 1; // Indica se é a vez do jogador 1 ou 2
         this.round = 0; // Número da rodada atual
         this.playerTurn = false; // Indica se é a vez do jogador
         this.timer = 800; // Tempo entre os flashes das cores
@@ -76,6 +78,7 @@ class GeniusPvpGame {
                 clearInterval(interval); // Limpa o intervalo quando todas as cores foram exibidas
                 setTimeout(() => { // Aguarda um pequeno intervalo antes de permitir que o jogador clique nos botões
                     this.buttons.colored.forEach(button => this.canPress(button)); // Permite que o jogador clique nos botões
+                    console.log('Vez do jogador 1');
                     this.playerTurn = true; // É a vez do jogador
                 }, i * this.timer);
                 return;
@@ -89,37 +92,63 @@ class GeniusPvpGame {
     }
 
     checkPlayerInput(color) {
-        if (!this.playerTurn) return; // Se não for a vez do jogador, não faz nada
-    
-        this.playerSequence.push(color); // Adiciona a cor clicada pelo jogador à sequência do jogador
-        const index = this.playerSequence.length - 1; // Obtém o índice da cor atual
-    
-        this.illuminateColor(color); // "Ilumina" o botão clicado pelo jogador
-    
-        if (this.playerSequence.length === this.computerSequence.length) { // Verifica se o jogador completou a sequência atual
-            // Verifica se as sequências do jogador e do computador são diferentes
-            const sequencesMatch = this.playerSequence.every((value, i) => value === this.computerSequence[i]);
-    
-            this.playerTurn = false; // A vez do jogador acabou
-            this.playerSequence = []; // Limpa a sequência inserida pelo jogador
-    
-            if (sequencesMatch) {
-                if (this.attempts === 1 || this.attempts === 0) {
-                    this.attempts = 2; // Reinicia o número de tentativas
-                    setTimeout(() => {
-                        this.buttons.colored.forEach(button => this.cannotPress(button)); // Impede que o jogador clique nos botões
-                        this.playRound(); // Inicia a próxima rodada
-                    }, this.timer);
-                } else {
-                    this.attempts--; // Decrementa o número de tentativas
-                    this.playerTurn = true; // Permite que o jogador clique nos botões novamente
-                    // Aqui você pode adicionar lógica relacionada ao vencedor, se necessário
+        if (!this.playerTurn) return;
+
+        if(this.whichPlayer === 1) {
+            this.playerSequence1.push(color);
+            const index = this.playerSequence1.length - 1;
+
+            if (this.playerSequence1[index] !== this.computerSequence[index]) {
+                this.whichPlayer = 2;
+                alert('Jogador 1 errou. Vez do jogador 2.');
+                this.playerSequence1.pop();
+                return;
+            }
+
+            this.illuminateColor(color);
+
+            if (this.playerSequence1.length === this.computerSequence.length) {
+                this.whichPlayer = 2;
+                alert('Jogador 1 acertou. Vez do jogador 2.');
+                return;
+            }
+        }
+
+        if(this.whichPlayer === 2) {
+            this.playerSequence2.push(color);
+            const index = this.playerSequence2.length - 1;
+
+            if (this.playerSequence2[index] !== this.computerSequence[index]) {
+                this.playerSequence2.pop();
+
+                if(this.playerSequence1.length > this.playerSequence2.length) alert('Jogador 1 ganhou.');
+                else if(this.playerSequence1.length === this.playerSequence2.length) alert('Empate.');
+                else alert('Jogador 2 ganhou.');
+
+                this.gameOver();
+                return;
+            }
+
+            this.illuminateColor(color);
+
+            if (this.playerSequence2.length === this.computerSequence.length) {
+                this.whichPlayer = 1;
+
+                if(this.playerSequence1.length < this.playerSequence2.length)
+                {
+                    alert('Jogador 2 ganhou.');
+                    this.gameOver();
+                    return;
                 }
-            } else {
-                // Lógica para encerrar o jogo após uma tentativa errada
-                console.log("Jogo encerrado. Você errou a sequência!");
-                // Pode adicionar outras ações conforme necessário
-                // Por exemplo, reiniciar o jogo, exibir uma mensagem de game over, etc.
+
+                this.playerTurn = false;
+                this.playerSequence1 = [];
+                this.playerSequence2 = [];
+                
+                setTimeout(() => {
+                    this.buttons.colored.forEach(button => this.cannotPress(button));
+                    this.playRound();
+                }, this.timer);
             }
         }
     }
@@ -156,15 +185,15 @@ class GeniusPvpGame {
 
     // Método para lidar com o fim do jogo
     gameOver() {
-        this.sounds.error.play().then(r => r); // Toca o som do erro
-        alert(`Fim de jogo! Sua pontuação: ${this.round - 1}`); // Exibe um alerta com a pontuação do jogador (número de rounds concluídos)
         this.resetGame(); // Reinicia o jogo
     }
 
     // Método para reiniciar o jogo. Limpa todas as variáveis do jogo
     resetGame() {
         this.computerSequence = []; // Limpa a sequência gerada pelo computador
-        this.playerSequence = []; // Limpa a sequência inserida pelo jogador
+        this.playerSequence1 = []; // Limpa a sequência inserida pelo jogador 1
+        this.playerSequence2 = []; // Limpa a sequência inserida pelo jogador 2
+        this.whichPlayer = 1; // Volta a vez para o jogador 1
         this.round = 0; // Reseta o número da rodada
         this.roundDisplay.textContent = "ROUND 0"; // Reseta o contador de rounds no elemento de exibição
         this.buttons.center.textContent = "JOGAR"; // Restaura o texto do botão central para "JOGAR"
