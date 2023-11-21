@@ -23,8 +23,16 @@ const modos = {
     pvp: {
         nome: 'pvp',
         button: document.getElementById('pvp-botao'),
-        // css: `aqui`,
-        // conteudo: `aqui`,
+        css: `<link class="pvp" rel="stylesheet" href="css/geniusPvp.css">`,
+        conteudo: `
+        <div class="pvp group-btn">
+        <button id="red" class="btn"></button>
+        <button id="blue" class="btn"></button>
+        <button id="yellow" class="btn"></button>
+        <button id="green" class="btn"></button>
+        <button id="btn-center">JOGAR</button>
+        </div>
+        `,
     },
 
     dobro: {
