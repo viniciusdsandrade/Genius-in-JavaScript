@@ -214,6 +214,20 @@ class GeniusPvpGame {
         this.buttons.colored.forEach(button => this.light(button)); // Ilumina todos os botões coloridos
         this.playerTurn = false; // Define que não é a vez do jogador (inicialmente)
     }
+
+    ajuda(){
+        document.querySelector("#ajuda").addEventListener("click", () => {
+            // Seleciona o overlay
+            const overlay = document.querySelector("#overlay");
+            // Condicional para mostrar o overlay caso ele esteja invisível e vice-versa
+            if (overlay.style.display == "block") {
+                this.overlay.style.display = "none";
+            } else {
+                this.overlay.style.display = "block";
+                }
+            }
+        )
+    }
 }
 
 window.GeniusPvpGame = GeniusPvpGame; // Coloca a classe no escopo global
